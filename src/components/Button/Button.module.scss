@@ -1,0 +1,21 @@
+.wrapper {
+    font-size: 1.2rem;
+    padding: 6px 35px;
+    font-weight: 600;
+    background-color: var(--alpha-bg);
+    border: solid 1px var(--white-color);
+    margin: 0 auto;
+    color: var(--white-color);
+    border-radius: 20px;
+
+    &:hover {
+        opacity: 0.8;
+        cursor: pointer;
+    }
+}
+
+.buy {
+    background-color: var(--vip-color);
+    border-color: var(--vip-color);
+    color: var(--black);
+}

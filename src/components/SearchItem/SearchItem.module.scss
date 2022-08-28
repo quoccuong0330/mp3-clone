@@ -1,0 +1,61 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    border-radius: 8px;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #ffffff1a;
+
+        .play {
+            display: block;
+        }
+    }
+}
+
+.avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.play {
+    position: absolute;
+    margin-left: 22px;
+    display: none;
+
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.name-song {
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.vip {
+    margin-left: 8px;
+}
+
+.name {
+    color: var(--search-text);
+    font-weight: 300;
+    font-size: 1.1rem;
+
+    &:hover {
+        color: var(--link-text-hover);
+    }
+}
+
+.time-song {
+    font-size: 1.3rem;
+}

@@ -1,0 +1,9 @@
+.wrapper {
+    max-height: min((100vh - 96px) - 60px, 734px);
+    width: 100%;
+    min-height: 100px;
+    padding: 13px 10px;
+    border-radius: 10px;
+    background-color: #432275;
+    color: var(--search-text);
+}
