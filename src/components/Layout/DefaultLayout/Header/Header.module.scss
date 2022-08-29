@@ -6,6 +6,7 @@
     align-items: center;
     min-width: calc(100vw - 330px - 239px);
     padding: 0 59px;
+    z-index: 2;
 }
 
 .header-left {
@@ -71,4 +72,14 @@
 
 .search-title {
     padding: 0 10px;
+}
+
+.circle {
+    padding: 14px;
+    border-radius: 50%;
+    margin: 0 5px;
+    border: none;
+    background-color: var(--alpha-bg);
+    cursor: pointer;
+    color: var(--white-color);
 }

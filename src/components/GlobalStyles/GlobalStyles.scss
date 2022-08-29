@@ -50,6 +50,10 @@ input,
     border: none;
 }
 
+input::file-selector-button {
+    display: none;
+}
+
 a[href] {
     text-decoration: none;
 }

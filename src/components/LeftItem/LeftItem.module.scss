@@ -3,7 +3,7 @@
     align-items: center;
     font-size: 13px;
     font-weight: 700;
-    padding: 7px 25px;
+    padding: 10px 25px;
     border-left: 3px solid transparent;
     color: var(--navigation-text);
 
@@ -15,4 +15,8 @@
 .active {
     background-color: var(--alpha-bg);
     border-left: 3px solid var(--purple-primary);
+}
+
+.img {
+    margin-left: 8px;
 }

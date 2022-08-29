@@ -7,6 +7,7 @@ const images = {
     genre: require('~/assets/images/genre.svg').default,
     top: require('~/assets/images/top.svg').default,
     music: require('~/assets/images/music.svg').default,
+    themeIcon: require('~/assets/images/themeIcon.svg').default,
 };
 
 export default images;

@@ -4,7 +4,21 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-function Button({ to, href, onClick, children, buy, ...passProps }) {
+function Button({
+    disable,
+    to,
+    href,
+    onClick,
+    children,
+    buy,
+    hasIcon,
+    circle,
+    direction,
+    leftIcon,
+    rightIcon,
+    content,
+    ...passProps
+}) {
     let Comp = 'button';
     const props = {
         onClick,
@@ -21,11 +35,17 @@ function Button({ to, href, onClick, children, buy, ...passProps }) {
 
     const classes = cx('wrapper', {
         buy,
+        circle,
+        direction,
+        disable,
+        hasIcon,
     });
 
     return (
         <Comp className={classes} {...props}>
+            {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
             <span>{children}</span>
+            {rightIcon && <span className={cx('right-icon')}>{rightIcon}</span>}
         </Comp>
     );
 }

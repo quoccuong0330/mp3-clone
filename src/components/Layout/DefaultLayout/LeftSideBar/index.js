@@ -23,7 +23,7 @@ function SideBar() {
                 <LeftItem to="/profile" icon={<FontAwesomeIcon icon={faUser} />} title="Cá Nhân" />
                 <LeftItem to="/" icon={<FontAwesomeIcon icon={faCompactDisc} />} title="Khám Phá" />
                 <LeftItem to="/chart" icon={<FontAwesomeIcon icon={faChartSimple} />} title="#zingchart" />
-                <LeftItem to="/radio" icon={<FontAwesomeIcon icon={faRadio} />} title="Radio" />
+                <LeftItem to="/radio" icon={<FontAwesomeIcon icon={faRadio} />} title="Radio" img={images.live} />
                 <LeftItem to="/following" icon={<FontAwesomeIcon icon={faStar} />} title="Theo Dõi" />
             </nav>
 
