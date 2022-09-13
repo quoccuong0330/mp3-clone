@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-import classNames from 'classnames/bind';
 import 'tippy.js/dist/tippy.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -13,22 +11,18 @@ import {
     faFileWaveform,
     faFontAwesome,
     faGear,
-    faMagnifyingGlass,
     faPhone,
     faRectangleAd,
     faRightFromBracket,
     faShield,
     faShirt,
-    faSpinner,
     faUpload,
     faUser,
-    faXmark,
 } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react/headless';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
-import SearchItem from '~/components/SearchItem';
-import Button from '~/components/Button';
 
+import Button from '~/components/Button';
+import Search from '~/components/Layout/component/Search';
+import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import { faAffiliatetheme, faThemeco } from '@fortawesome/free-brands-svg-icons';
 
@@ -98,14 +92,6 @@ const USER_ITEM = [
 ];
 
 function Header() {
-    const [searchResult, setSearchResult] = useState([]);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([]);
-        }, 0);
-    }, []);
-
     return (
         <header className={cx('wrapper')}>
             <div className={cx('header-left')}>
@@ -117,32 +103,7 @@ function Header() {
                     <FontAwesomeIcon icon={faArrowRight} />
                 </Button>
 
-                <Tippy
-                    interactive={true}
-                    visible={searchResult.length > 0}
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <PopperWrapper>
-                                <h4 className={cx('search-title')}>Ket qua tim kiem</h4>
-                                <SearchItem />
-                                <SearchItem />
-                                <SearchItem />
-                                <SearchItem />
-                            </PopperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('wrapper-search')}>
-                        <input placeholder="Find song, artist,..." />
-                        <button className={cx('clear-btn')}>
-                            <FontAwesomeIcon icon={faXmark} />
-                        </button>
-                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-                        <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                    </div>
-                </Tippy>
+                <Search />
             </div>
             <div className={cx('option')}>
                 <Button circle contents="Theme">
