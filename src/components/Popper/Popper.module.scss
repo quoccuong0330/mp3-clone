@@ -1,6 +1,7 @@
 .wrapper {
-    max-height: min((100vh - 96px) - 60px, 734px);
+    // max-height: min((100vh - 96px) - 60px, 734px);
     width: 100%;
+    min-width: none;
     min-height: 100px;
     padding: 13px 0;
     border-radius: 10px;

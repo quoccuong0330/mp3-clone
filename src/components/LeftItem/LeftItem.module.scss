@@ -10,10 +10,15 @@
     .icon {
         margin-right: 8px;
     }
+
+    &:hover {
+        color: var(--white-color);
+    }
 }
 
 .active {
     background-color: var(--alpha-bg);
+    color: var(--white-color);
     border-left: 3px solid var(--purple-primary);
 }
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
+import 'tippy.js/dist/tippy.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faAngleRight,
@@ -7,6 +8,7 @@ import {
     faArrowRight,
     faBan,
     faCircleInfo,
+    faCoins,
     faFile,
     faFileWaveform,
     faFontAwesome,
@@ -14,6 +16,7 @@ import {
     faMagnifyingGlass,
     faPhone,
     faRectangleAd,
+    faRightFromBracket,
     faShield,
     faShirt,
     faSpinner,
@@ -28,7 +31,6 @@ import Button from '~/components/Button';
 
 import styles from './Header.module.scss';
 import { faAffiliatetheme, faThemeco } from '@fortawesome/free-brands-svg-icons';
-import Menu from '~/components/Popper/Menu';
 
 const cx = classNames.bind(styles);
 
@@ -80,6 +82,21 @@ const MENU_ITEM = [
     },
 ];
 
+const USER_ITEM = [
+    {
+        leftIcon: <FontAwesomeIcon icon={faCoins} />,
+        title: 'Nâng cấp VIP',
+    },
+    {
+        leftIcon: <FontAwesomeIcon icon={faCoins} />,
+        title: 'Mua VIP',
+    },
+    {
+        leftIcon: <FontAwesomeIcon icon={faRightFromBracket} />,
+        title: 'Đăng xuất',
+    },
+];
+
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
 
@@ -92,11 +109,11 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('header-left')}>
-                <Button direction>
+                <Button direction disable>
                     <FontAwesomeIcon icon={faArrowLeft} />
                 </Button>
 
-                <Button direction>
+                <Button direction disable>
                     <FontAwesomeIcon icon={faArrowRight} />
                 </Button>
 
@@ -128,10 +145,9 @@ function Header() {
                 </Tippy>
             </div>
             <div className={cx('option')}>
-                <Button circle>
+                <Button circle contents="Theme">
                     <FontAwesomeIcon icon={faShirt} />
                 </Button>
-
                 <Button
                     circle
                     href="https://zingmp3.vn/vip?utm_source=desktop&utm_campaign=VIP&utm_medium=sidebar"
@@ -139,15 +155,15 @@ function Header() {
                 >
                     <FontAwesomeIcon icon={faThemeco} />
                 </Button>
+
                 <Button circle>
                     <FontAwesomeIcon icon={faUpload} />
                 </Button>
-                <Menu items={MENU_ITEM}>
-                    <button className={cx('circle')}>
-                        <FontAwesomeIcon icon={faGear} />
-                    </button>
-                </Menu>
-                <Button circle>
+
+                <Button items={MENU_ITEM} circle>
+                    <FontAwesomeIcon icon={faGear} />
+                </Button>
+                <Button items={USER_ITEM} circle>
                     <FontAwesomeIcon icon={faUser} />
                 </Button>
             </div>
