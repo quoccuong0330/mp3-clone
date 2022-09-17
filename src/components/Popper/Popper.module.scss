@@ -2,9 +2,11 @@
     // max-height: min((100vh - 96px) - 60px, 734px);
     width: 100%;
     min-width: none;
-    min-height: 100px;
+    // min-height: 100px;
     padding: 13px 0;
     border-radius: 10px;
     background-color: #432275;
     color: var(--search-text);
+    max-height: 360px;
+    overflow: auto;
 }

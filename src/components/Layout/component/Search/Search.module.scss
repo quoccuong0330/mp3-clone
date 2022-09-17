@@ -17,7 +17,7 @@
         height: 100%;
         color: var(--search-text);
         background-color: transparent;
-
+        padding-right: 35px;
         &::placeholder {
             /* Chrome, Firefox, Opera, Safari 10.1+ */
             color: var(--search-text);
@@ -53,6 +53,19 @@
     color: #fff;
     background-color: transparent;
     cursor: pointer;
+}
+
+.loading {
+    animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .search-title {

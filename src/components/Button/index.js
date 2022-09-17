@@ -52,33 +52,23 @@ function Button({
         });
     };
 
-    if (items) {
-        return (
-            <Tippy
-                interactive={true}
-                placement="bottom-end"
-                render={(attrs) => (
-                    <div className={cx('content')} tabIndex="-1" {...attrs}>
-                        <PopperWrapper>{renderItems()}</PopperWrapper>
-                    </div>
-                )}
-            >
-                <Comp className={classes} {...props}>
-                    {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
-                    {children}
-                    {rightIcon && <span className={cx('right-icon')}>{rightIcon}</span>}
-                </Comp>
-            </Tippy>
-        );
-    } else if (contents) {
-        return (
+    return (
+        <Tippy
+            interactive={true}
+            placement="bottom-end"
+            render={(attrs) => (
+                <div className={cx('content')} tabIndex="-1" {...attrs}>
+                    <PopperWrapper>{renderItems()}</PopperWrapper>
+                </div>
+            )}
+        >
             <Comp className={classes} {...props}>
                 {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
                 {children}
                 {rightIcon && <span className={cx('right-icon')}>{rightIcon}</span>}
             </Comp>
-        );
-    }
+        </Tippy>
+    );
 }
 
 export default Button;

@@ -6,7 +6,7 @@
     position: relative;
     cursor: pointer;
     width: 95%;
-    margin: 0 auto;
+    margin: 0 0 0 22px;
 
     &:hover {
         background-color: #ffffff1a;
@@ -22,14 +22,16 @@
     height: 52px;
     border-radius: 5px;
     object-fit: cover;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
 }
 
 .play {
     position: absolute;
     margin-left: 22px;
     display: none;
-
-    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .info {
@@ -56,6 +58,9 @@
     &:hover {
         color: var(--link-text-hover);
     }
+}
+.name-artist {
+    display: flex;
 }
 
 .time-song {

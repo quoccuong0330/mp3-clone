@@ -6,6 +6,7 @@ import SearchItem from '~/components/SearchItem';
 import { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
+import useDebounce from '~/hooks/useDebounce';
 
 const cx = classNames.bind(styles);
 
@@ -13,16 +14,14 @@ function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const inputRef = useRef();
 
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1]);
-        }, 0);
-    }, []);
+    const debounce = useDebounce(searchValue, 500);
 
     const handleClearSearch = () => {
+        setSearchResult([]);
         setSearchValue('');
         inputRef.current.focus();
     };
@@ -31,6 +30,25 @@ function Search() {
         setShowResult(false);
     };
 
+    useEffect(() => {
+        if (!debounce.trim()) {
+            setSearchResult([]);
+            return;
+        }
+
+        setLoading(true);
+
+        fetch(`https://apizingmp3.herokuapp.com/api/search?keyword=${debounce}`)
+            .then((res) => res.json())
+            .then((res) => {
+                setSearchResult(res.data.songs || []);
+                setLoading(false);
+            })
+            .catch(() => {
+                setLoading(false);
+            });
+    }, [debounce]);
+
     return (
         <Tippy
             interactive
@@ -38,11 +56,15 @@ function Search() {
             render={(attrs) => (
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                     <PopperWrapper>
-                        <h4 className={cx('search-title')}>Ket qua tim kiem</h4>
-                        <SearchItem />
-                        <SearchItem />
-                        <SearchItem />
-                        <SearchItem />
+                        {searchResult.map((result) => (
+                            <SearchItem
+                                key={result.encodeId}
+                                url={result.thumbnail}
+                                name={result.artistsNames}
+                                title={result.title}
+                                duration={result.duration}
+                            />
+                        ))}
                     </PopperWrapper>
                 </div>
             )}
@@ -56,13 +78,13 @@ function Search() {
                     onFocus={() => setShowResult(true)}
                     placeholder="Find song, artist,..."
                 />
-                {!!searchValue && (
+                {!!searchValue && !loading && (
                     <button className={cx('clear-btn')} onClick={handleClearSearch}>
                         <FontAwesomeIcon icon={faXmark} />
                     </button>
                 )}
 
-                <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
+                {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
                 <button className={cx('search-btn')}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
