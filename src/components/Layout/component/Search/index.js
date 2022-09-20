@@ -2,7 +2,7 @@ import { faMagnifyingGlass, faSpinner, faXmark } from '@fortawesome/free-solid-s
 import Tippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import SearchItem from '~/components/SearchItem';
+import Card from '~/components/Card';
 import { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
@@ -57,13 +57,7 @@ function Search() {
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                     <PopperWrapper>
                         {searchResult.map((result) => (
-                            <SearchItem
-                                key={result.encodeId}
-                                url={result.thumbnail}
-                                name={result.artistsNames}
-                                title={result.title}
-                                duration={result.duration}
-                            />
+                            <Card key={result.encodeId} data={result} search />
                         ))}
                     </PopperWrapper>
                 </div>

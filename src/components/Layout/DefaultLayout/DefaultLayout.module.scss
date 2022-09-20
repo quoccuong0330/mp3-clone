@@ -3,3 +3,14 @@
     height: 100vh;
     width: 100vw;
 }
+
+.content {
+    overflow: auto;
+    width: 100%;
+    padding: 0 59px;
+    background-color: var(--layout-bg);
+}
+
+.children {
+    margin-top: 102px;
+}

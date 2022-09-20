@@ -7,6 +7,9 @@
     min-width: calc(100vw - 240px);
     padding: 0 59px;
     z-index: 2;
+    position: fixed;
+    top: 0;
+    right: 0;
 }
 
 .header-left {

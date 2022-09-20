@@ -1,0 +1,18 @@
+.wrapper {
+    height: 285px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 7.5px;
+}
+
+.item {
+    height: 100%;
+    &:hover {
+        transition: transform 0.7s;
+        transform: scale(1.1);
+    }
+}
+
+.img {
+    width: 100%;
+}

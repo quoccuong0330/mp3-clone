@@ -21,6 +21,8 @@ function Button({
     leftIcon,
     rightIcon,
     contents,
+    primary,
+    primarymode,
     items = [],
     ...passProps
 }) {
@@ -44,6 +46,8 @@ function Button({
         direction,
         disable,
         hasIcon,
+        primary,
+        primarymode,
     });
 
     const renderItems = () => {

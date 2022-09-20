@@ -17,6 +17,7 @@
     --purple-primary: #7200a1;
     --link-text-hover: #c662ef;
     --chart-bg-img-alpha: rgba(32, 19, 53, 0.9);
+    --border-primary: hsla(0, 0%, 100%, 0.1);
 
     --search-text: #eee;
     --alpha-bg: hsla(0, 0%, 100%, 0.1);
@@ -56,6 +57,10 @@ input::file-selector-button {
 
 a[href] {
     text-decoration: none;
+}
+
+a:hover {
+    color: currentColor;
 }
 
 .svg-inline--fa {
