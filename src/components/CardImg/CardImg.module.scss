@@ -2,6 +2,7 @@
     height: 285px;
     border-radius: 10px;
     overflow: hidden;
+    position: relative;
     margin: 0 7.5px;
 }
 
@@ -11,6 +12,27 @@
         transition: transform 0.7s;
         transform: scale(1.1);
     }
+}
+
+.content {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0 16px;
+    margin-bottom: 12px;
+    color: var(--white-color);
+}
+
+.play-icon {
+    color: #fff;
+}
+
+.title {
+    font-weight: 800;
+    font-size: 21px;
+    line-height: 29px;
+    white-space: nowrap;
+    text-shadow: 1px 1px 4px black;
 }
 
 .img {

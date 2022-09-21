@@ -1,20 +1,26 @@
 import styles from './CardImg.module.scss';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
-function CardImg() {
+function CardImg({ data }) {
     return (
         <div className={cx('wrapper')}>
-            <Link to="/">
+            <Link to={data.link}>
                 <div className={cx('item')}>
-                    <img
-                        className={cx('img')}
-                        alt="nghe-si"
-                        src="https://photo-resize-zmp3.zmdcdn.me/w480_r2x3_jpeg/cover_artist/3/e/c/5/3ec5ae34f4ad4fcaab567c678d44ce86.jpg"
-                    />
+                    <img className={cx('img')} alt="nghe-si" src={data.thumbnail} />
                 </div>
+
+                <span className={cx('icon-play')}>
+                    <FontAwesomeIcon icon={faPlayCircle} />
+                </span>
+
+                <h1 className={cx('content')}>
+                    <span className={cx('title')}>{data.artistsNames}</span>
+                </h1>
             </Link>
         </div>
     );

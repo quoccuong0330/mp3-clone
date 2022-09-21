@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import classNames from 'classnames/bind';
 import Button from '~/components/Button';
 import Card from '~/components/Card';
@@ -11,6 +12,8 @@ const cx = classNames.bind(styles);
 function NewSong() {
     const [musics, setMusics] = useState([]);
     const [title, setTitle] = useState([]);
+    const [titleCard, setTitleCard] = useState([]);
+    const [cardImg, setCardImg] = useState([]);
 
     useEffect(() => {
         fetch(`https://apizingmp3.herokuapp.com/api/home?page=1`)
@@ -18,9 +21,21 @@ function NewSong() {
             .then((res) => {
                 const array = res.data.items[3].items[0].song;
                 setMusics(array.slice(0, 12));
-                setTitle(res.data.items[3].title);
+                setTitle(res.data.items[0].title);
             });
     }, []);
+
+    useEffect(() => {
+        fetch(`https://apizingmp3.herokuapp.com/api/home?page=2`)
+            .then((res) => res.json())
+            .then((res) => {
+                const array = res.data.items[0].items;
+                setCardImg(array.slice(0, 5));
+                setTitleCard(res.data.items[0].title);
+            });
+    }, []);
+
+    console.log(cardImg);
 
     return (
         <div className={cx('wrapper')}>
@@ -39,13 +54,12 @@ function NewSong() {
                 ))}
             </Row>
 
-            <h1 className={cx('title')}>Nhac si yeu thich</h1>
+            <h1 className={cx('title')}>{titleCard}</h1>
+            
             <div className={cx('item')}>
-                <CardImg />
-                <CardImg />
-                <CardImg />
-                <CardImg />
-                <CardImg />
+                {cardImg.map((card) => (
+                    <CardImg key={card.encodeId} data={card} />
+                ))}
             </div>
         </div>
     );
