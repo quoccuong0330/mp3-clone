@@ -2,10 +2,28 @@ import classNames from 'classnames/bind';
 import styles from './Card.module.scss';
 import images from '~/assets/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisVertical, faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisVertical, faHeart, faPlay } from '@fortawesome/free-solid-svg-icons';
+import Tippy from '@tippyjs/react/headless';
 import { Link } from 'react-router-dom';
+import { Wrapper as PopperWrapper } from '~/components/Popper';
+import { useEffect, useState } from 'react';
 
 const cx = classNames.bind(styles);
+
+const items = [
+    {
+        icon: <FontAwesomeIcon icon={faHeart} />,
+        title: 'Them vao thu vien',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faHeart} />,
+        title: 'Them vao thu vien',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faHeart} />,
+        title: 'Them vao thu vien',
+    },
+];
 
 // function Card({ url, name, artist, title, duration }) {
 function Card({ data, search, playlist }) {
@@ -18,6 +36,12 @@ function Card({ data, search, playlist }) {
     const namesArray = data.artists;
 
     const classes = cx('wrapper', { search, playlist });
+
+    const [show, setShow] = useState(false);
+
+    const handleHide = () => {
+        setShow(false);
+    };
 
     return (
         <div className={classes}>
@@ -41,9 +65,28 @@ function Card({ data, search, playlist }) {
             {search ? (
                 <span className={cx('time-song')}>{convertMinute(data.duration)}</span>
             ) : (
-                <span className={cx('option')}>
-                    <FontAwesomeIcon icon={faEllipsisVertical} />
-                </span>
+                <Tippy
+                    interactive
+                    visible={show}
+                    placement="bottom-start"
+                    render={(attrs) => (
+                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                            <PopperWrapper>
+                                {items.map((item, index) => (
+                                    <li key={index}>
+                                        <span>{item.icon}</span>
+                                        <span>{item.title}</span>
+                                    </li>
+                                ))}
+                            </PopperWrapper>
+                        </div>
+                    )}
+                    onClickOutside={handleHide}
+                >
+                    <span className={cx('option')} onClick={() => setShow(true)}>
+                        <FontAwesomeIcon icon={faEllipsisVertical} />
+                    </span>
+                </Tippy>
             )}
         </div>
     );

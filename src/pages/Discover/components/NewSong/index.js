@@ -23,19 +23,18 @@ function NewSong() {
                 setMusics(array.slice(0, 12));
                 setTitle(res.data.items[0].title);
             });
-    }, []);
 
-    useEffect(() => {
         fetch(`https://apizingmp3.herokuapp.com/api/home?page=2`)
             .then((res) => res.json())
             .then((res) => {
-                const array = res.data.items[0].items;
-                setCardImg(array.slice(0, 5));
+                const array1 = res.data.items[0].items;
+                console.log('array: ', array1);
+                setCardImg(array1.slice(0, 5));
                 setTitleCard(res.data.items[0].title);
             });
     }, []);
 
-    console.log(cardImg);
+    console.log('card: ', cardImg);
 
     return (
         <div className={cx('wrapper')}>
@@ -55,7 +54,7 @@ function NewSong() {
             </Row>
 
             <h1 className={cx('title')}>{titleCard}</h1>
-            
+
             <div className={cx('item')}>
                 {cardImg.map((card) => (
                     <CardImg key={card.encodeId} data={card} />
